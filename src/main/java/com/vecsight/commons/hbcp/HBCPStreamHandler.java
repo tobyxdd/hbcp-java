@@ -69,6 +69,12 @@ public class HBCPStreamHandler {
         outputStream.write(sb.toString().getBytes(charset));
     }
 
+    public void sendSingleMsg(String key, HBCPValue value) throws IOException, ValueTypeMismatchException {
+        HashMap<String, HBCPValue> map = new HashMap<>();
+        map.put(key, value);
+        sendMsg(map);
+    }
+
     public static void main(String[] args) {
         try {
             ServerSocket serverSocket = new ServerSocket(9900);
